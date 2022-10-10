@@ -1,5 +1,5 @@
 class Buffer {
-    SEND_TIMING = 4000
+    SEND_TIMING = 1000
     lastSentTime = 0
 
     constructor() {
