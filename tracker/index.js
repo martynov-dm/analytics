@@ -4,6 +4,7 @@ const app = express();
 const cors = require('cors')
 const mongoose = require("mongoose");
 const Event = require('./schemas/event')
+const validateEvent = require('./validation')
 
 const start = async () => {
     try {
@@ -29,7 +30,7 @@ app.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "/script.js"));
 });
 
-app.post("/track",  (req, res) => {
+app.post("/track", validateEvent,  (req, res) => {
     Event.insertMany(req.body, { ordered: false }, (err, docs) => {
         if (err) console.log(err)
     })
