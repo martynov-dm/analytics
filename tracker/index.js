@@ -31,7 +31,7 @@ app.get("/", (req, res) => {
 
 app.post("/track",  (req, res) => {
     Event.insertMany(req.body, { ordered: false }, (err, docs) => {
-        if (err) return err
+        if (err) console.log(err)
     })
 
     res.sendStatus(200)
